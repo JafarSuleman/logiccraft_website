@@ -10,6 +10,7 @@ class PageLayout extends StatelessWidget {
   final Color? backgroundColor;
   final bool showFooter;
   final ScrollController? scrollController;
+  //New Code
 
   const PageLayout({
     Key? key,
