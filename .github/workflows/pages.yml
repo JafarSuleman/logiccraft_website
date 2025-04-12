@@ -1,6 +1,8 @@
-name: Setup GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
+  push:
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -8,15 +10,50 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  setup:
-    name: Setup GitHub Pages
+  build:
     runs-on: ubuntu-latest
-    
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29.0'
+          channel: 'stable'
+      
+      - name: Install dependencies
+        run: flutter pub get
+      
+      - name: Build Flutter Web
+        run: flutter build web --release
+      
+      - name: Copy essential files
+        run: |
+          cp assets/images/Logiccraft_logo.png build/web/icons/
+          cp assets/images/Logiccraft_logo.png build/web/favicon.png
+          touch build/web/.nojekyll
+      
       - name: Setup Pages
-        id: pages
         uses: actions/configure-pages@v3
       
-      - name: Verify setup
-        run: echo "GitHub Pages is now configured. Website will be available at ${{ steps.pages.outputs.base_url }}" 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'build/web'
+  
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2 
