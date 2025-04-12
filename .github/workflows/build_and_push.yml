@@ -22,13 +22,14 @@ jobs:
         run: flutter pub get
       
       - name: Build
-        run: flutter build web --release
+        run: flutter build web --release --base-href "/logiccraft_website/"
       
-      - name: Setup icons
+      - name: Setup web files
         run: |
           mkdir -p build/web/icons
           cp assets/images/Logiccraft_logo.png build/web/icons/
           cp assets/images/Logiccraft_logo.png build/web/favicon.png
+          cp web/404.html build/web/404.html
           touch build/web/.nojekyll
       
       - name: Push to gh-pages
