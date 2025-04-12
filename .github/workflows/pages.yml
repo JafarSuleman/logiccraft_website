@@ -1,0 +1,22 @@
+name: Setup GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  setup:
+    name: Setup GitHub Pages
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+      
+      - name: Verify setup
+        run: echo "GitHub Pages is now configured. Website will be available at ${{ steps.pages.outputs.base_url }}" 
