@@ -1,0 +1,44 @@
+name: Build and Push
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29.0'
+          channel: 'stable'
+      
+      - name: Install dependencies
+        run: flutter pub get
+      
+      - name: Build
+        run: flutter build web --release
+      
+      - name: Setup icons
+        run: |
+          mkdir -p build/web/icons
+          cp assets/images/Logiccraft_logo.png build/web/icons/
+          cp assets/images/Logiccraft_logo.png build/web/favicon.png
+          touch build/web/.nojekyll
+      
+      - name: Push to gh-pages
+        run: |
+          cd build/web
+          git init
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add .
+          git commit -m "Deploy web build"
+          git branch -M gh-pages
+          git remote add origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
+          git push -f origin gh-pages 
