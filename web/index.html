@@ -40,17 +40,58 @@
 <body>
   <script>
     window.addEventListener('load', function(ev) {
+      // Define serviceWorkerVersion for older versions of Flutter
+      var serviceWorkerVersion = null;
+      
       // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
+      var scriptLoaded = false;
+      function _loadEntrypoint() {
+        if (scriptLoaded) {
+          return;
         }
-      });
+        scriptLoaded = true;
+        
+        var scriptTag = document.createElement('script');
+        scriptTag.src = 'main.dart.js';
+        scriptTag.type = 'application/javascript';
+        document.body.append(scriptTag);
+      }
+
+      // Check if Flutter is available
+      if ('serviceWorker' in navigator) {
+        // Service worker registration for PWA
+        window.addEventListener('flutter-first-frame', function () {
+          navigator.serviceWorker.register('flutter_service_worker.js');
+        });
+      }
+
+      try {
+        // Modern Flutter loader
+        if (window.flutter_web_optimizer || window.flutter) {
+          // Flutter web is already initialized
+          _loadEntrypoint();
+        } else {
+          // Initialize Flutter web
+          window.flutterConfiguration = {
+            canvasKitBaseUrl: "canvaskit/"
+          };
+          
+          _flutter = {
+            loader: {
+              loadEntrypoint: function(options) {
+                if (options && options.serviceWorker) {
+                  serviceWorkerVersion = options.serviceWorker.serviceWorkerVersion;
+                }
+                _loadEntrypoint();
+              }
+            }
+          };
+        }
+      } catch (e) {
+        console.error("Error initializing Flutter web:", e);
+        // Fallback to legacy loading method
+        _loadEntrypoint();
+      }
     });
   </script>
 </body>
