@@ -30,6 +30,7 @@ jobs:
           cp assets/images/Logiccraft_logo.png build/web/icons/
           cp assets/images/Logiccraft_logo.png build/web/favicon.png
           cp web/404.html build/web/404.html
+          cp web/manifest.json build/web/manifest.json
           touch build/web/.nojekyll
       
       - name: Push to gh-pages
