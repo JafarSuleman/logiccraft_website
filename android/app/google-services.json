@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "608253012732",
+    "project_id": "logiccraft-technologies",
+    "storage_bucket": "logiccraft-technologies.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608253012732:android:a6d5d25da4ec92d6850579",
+        "android_client_info": {
+          "package_name": "com.logiccraft.technologies.untitled1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbXiK22nJwkqBN3XF1KSVlB6ft144E9xg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

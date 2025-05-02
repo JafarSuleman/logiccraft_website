@@ -1,5 +1,16 @@
 {
   "projects": {
     "default": "logiccraft-website"
-  }
+  },
+  "targets": {
+    "logiccraft-website": {
+      "hosting": {
+        "default": [
+          "logiccraft-technologies"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
