@@ -100,7 +100,7 @@ class _NavbarState extends State<Navbar> {
             fit: BoxFit.contain,
           ),
           const SizedBox(width: 10),
-          CustomText.headlineSmall('LogicCraft'),
+          CustomText.headlineSmall('LogicCraft Technologies'),
         ],
       ),
     );

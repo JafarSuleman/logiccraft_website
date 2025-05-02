@@ -24,7 +24,7 @@ class TextConstants {
   
   // Features Section
   static const String whyChooseUsTitle = 'Why Choose Us';
-  static const String whyChooseUsSubtitle = 'What sets LogicCraft apart from the competition';
+  static const String whyChooseUsSubtitle = 'What sets LogicCraft Technologies apart from the competition';
   static const String featureTitle1 = 'Innovative Solutions';
   static const String featureDesc1 = 'We leverage cutting-edge technologies to deliver innovative solutions that keep you ahead of the competition.';
   static const String featureTitle2 = 'Expert Team';
@@ -72,11 +72,11 @@ class TextConstants {
   static const String contactFormTitle = 'Send Us a Message';
   static const String contactFormSubtitle = 'Fill out the form below and we\'ll get back to you as soon as possible';
   static const String addressLabel = 'Address';
-  static const String addressText = '123 Tech Park, Innovation Street, Digital City, 12345';
+  static const String addressText = 'Flat No: 14, 3rd Floor, Collage Town Plaza, Opposite to GPGC, Pendi Road, Kohat';
   static const String emailLabel = 'Email';
   static const String emailText = 'info@logiccraft.tech';
   static const String phoneLabel = 'Phone';
-  static const String phoneText = '+1 (123) 456-7890';
+  static const String phoneText = '+92 334 6665 950';
   static const String nameFieldLabel = 'Your Name';
   static const String emailFieldLabel = 'Your Email';
   static const String subjectFieldLabel = 'Subject';
