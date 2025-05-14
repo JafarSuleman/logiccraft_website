@@ -5,12 +5,12 @@ class AppConstants {
   static const String appDescription = 'Expert IT solutions tailored for your business needs';
   
   // Contact information
-  static const String email = 'info@logiccraft.tech';
-  static const String phone = '+1 (555) 123-4567';
-  static const String address = '123 Tech Boulevard, Innovation District, City, Country';
+  static const String email = 'info@logiccrafttechnologies.com';
+  static const String phone = '0334 6665 950';
+  static const String address = 'Flat No 14, 3rd Floor, Collage Town Plaza, opposite to GPGC, Pendi Road,Kohat';
   
   // Social media links
-  static const String linkedIn = 'https://linkedin.com/company/logiccraft-tech';
+  static const String linkedIn = 'https://www.linkedin.com/company/logic-craft-technologies/?viewAsMember=true';
   static const String facebook = 'https://facebook.com/logiccraft';
   static const String twitter = 'https://twitter.com/logiccraft';
   static const String instagram = 'https://instagram.com/logiccraft';

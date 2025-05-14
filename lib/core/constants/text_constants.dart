@@ -74,7 +74,7 @@ class TextConstants {
   static const String addressLabel = 'Address';
   static const String addressText = 'Flat No: 14, 3rd Floor, Collage Town Plaza, Opposite to GPGC, Pendi Road, Kohat';
   static const String emailLabel = 'Email';
-  static const String emailText = 'info@logiccraft.tech';
+  static const String emailText = 'info@logiccrafttechnologies.com';
   static const String phoneLabel = 'Phone';
   static const String phoneText = '+92 334 6665 950';
   static const String nameFieldLabel = 'Your Name';
